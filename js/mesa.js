@@ -1,5 +1,3 @@
-var geometry, material;
-
 function addTableLeg(obj, x, y, z) {
     'use strict';
 
@@ -35,5 +33,5 @@ function createTable(x, y, z) {
     table.position.y = y;
     table.position.z = z;
     
-    return table;
+    scene.add(table);
 }

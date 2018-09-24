@@ -1,5 +1,3 @@
-var geometry, material, mesh;
-
 function addLampShade(obj, x, y, z) {
     'use strict';
 
@@ -55,5 +53,5 @@ function createLamp(x, y, z) {
     lamp.position.y = y;
     lamp.position.z = z;
     
-    return lamp;
+    scene.add(lamp);
 }

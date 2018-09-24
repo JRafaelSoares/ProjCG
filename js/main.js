@@ -4,11 +4,8 @@ var camera1, camera2, camera3, scene, renderer;
 
 var cameraList;
 
-<<<<<<< HEAD
 var geometry, material, lampMaterial, mesh, wireframe = true;
 
-=======
->>>>>>> 47a01ec656fecae4c7020a3ffae64c86204c78ca
 var camera_num = 0;
 
 function createScene() {
@@ -19,7 +16,7 @@ function createScene() {
     scene.add(new THREE.AxisHelper(40));
     
     createLamp(0, 0, 0);
-    scene.add(createTable(0, 8, 0));
+    createTable(0, 8, 0);
 }
 
 function createCamera() {
