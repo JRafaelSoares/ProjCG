@@ -4,47 +4,7 @@ var camera1, camera2, camera3, scene, renderer;
 
 var cameraList;
 
-var geometry, material, lampMaterial, mesh;
-
 var camera_num = 0;
-
-function addTableLeg(obj, x, y, z) {
-    'use strict';
-
-    geometry = new THREE.CylinderGeometry(6, 6, 100);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y - 3, z);
-    obj.add(mesh);
-}
-
-function addTableTop(obj, x, y, z) {
-    'use strict';
-    geometry = new THREE.CubeGeometry(360, 12, 120);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
-
-
-function createTable(x, y, z) {
-    'use strict';
-    
-    var table = new THREE.Object3D();
-    
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-   
-    addTableTop(table, 0, 0, 0);
-    addTableLeg(table, -150, -50, -48);
-    addTableLeg(table, -150, -50, 48);
-    addTableLeg(table, 150, -50, 48);
-    addTableLeg(table, 150, -50, -48);
-    
-    scene.add(table);
-    
-    table.position.x = x;
-    table.position.y = y;
-    table.position.z = z;
-}
 
 function createScene() {
     'use strict';
@@ -54,7 +14,7 @@ function createScene() {
     scene.add(new THREE.AxisHelper(40));
     
     createLamp(0, 0, 0);
-    createTable(0, 8, 0);
+    scene.add(createTable(0, 8, 0));
 }
 
 function createCamera() {
@@ -169,67 +129,4 @@ function animate() {
     render();
     
     requestAnimationFrame(animate);
-}
-
-
-
-
-/* Lamp */
-
-function addLampShade(obj, x, y, z) {
-    'use strict';
-
-    geometry = new THREE.CylinderGeometry(6, 6, 100);
-    mesh = new THREE.Mesh(geometry, lampMaterial);
-    mesh.position.set(x, y - 3, z);
-    obj.add(mesh);
-}
-
-function addLightBulb(obj, x, y, z) {
-    'use strict';
-    
-    geometry = new THREE.CubeGeometry(360, 12, 120);
-    mesh = new THREE.Mesh(geometry, lampMaterial);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
-
-function addLampBase(obj, x, y, z) {
-    'use strict';
-    
-    geometry = new THREE.CylinderGeometry(4, 20, 10, 15);
-    mesh = new THREE.Mesh(geometry, lampMaterial);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
-
-function addLampBody(obj, x, y, z) {
-    'use strict';
-    
-    var lampHeight = 60;
-    
-    geometry = new THREE.CylinderGeometry(4, 4, lampHeight);
-    mesh = new THREE.Mesh(geometry, lampMaterial);
-    mesh.position.set(x, y + lampHeight / 2, z);
-    obj.add(mesh);
-}
-
-
-function createLamp(x, y, z) {
-    'use strict';
-    
-    var lamp = new THREE.Object3D();
-    
-    lampMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
-   
-    addLampBase(lamp, 0, 0, 0);
-    addLampBody(lamp, 0, 0, 0);
-    //addLightBulb(lamp, 0, -50, 48);
-    //addLampShade(lamp)
-    
-    scene.add(lamp);
-    
-    lamp.position.x = x;
-    lamp.position.y = y;
-    lamp.position.z = z;
 }
