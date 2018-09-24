@@ -4,7 +4,7 @@ var camera1, camera2, camera3, scene, renderer;
 
 var cameraList;
 
-var geometry, material, lampMaterial, mesh;
+var geometry, material, lampMaterial, mesh, wireframe = true;
 
 var camera_num = 0;
 
@@ -110,9 +110,10 @@ function onKeyDown(e) {
     switch (e.keyCode) {
     case 65: //A
     case 97: //a
+        wireframe = !wireframe;
         scene.traverse(function (node) {
             if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
+                node.material.wireframe = wireframe; //!node.material.
             }
         });
         break;
