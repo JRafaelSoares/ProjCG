@@ -26,7 +26,7 @@ function createCamera() {
     camera1 = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
     
     camera1.position.x = 0;
-    camera1.position.y = 20;
+    camera1.position.y = 200;
     camera1.position.z = 0;
     camera1.lookAt(scene.position);
     
