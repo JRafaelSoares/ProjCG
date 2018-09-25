@@ -26,13 +26,13 @@ function createCamera() {
     camera1 = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
     
     camera1.position.x = 0;
-    camera1.position.y = 20;
+    camera1.position.y = 200;
     camera1.position.z = 0;
     camera1.lookAt(scene.position);
     
     camera2 = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
     
-    camera2.position.x = 380;
+    camera2.position.x = 200;
     camera2.position.y = 0;
     camera2.position.z = 0;
     camera2.lookAt(scene.position);
@@ -41,7 +41,7 @@ function createCamera() {
     
     camera3.position.x = 0;
     camera3.position.y = 0;
-    camera3.position.z = 140;
+    camera3.position.z = 200;
     camera3.lookAt(scene.position);
     cameraList= [camera1, camera2, camera3];
 }
