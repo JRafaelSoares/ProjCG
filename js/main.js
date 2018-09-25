@@ -4,58 +4,18 @@ var camera1, camera2, camera3, scene, renderer;
 
 var cameraList;
 
-var geometry, material, mesh;
-
-var ball;
+var geometry, material, lampMaterial, mesh, wireframe = true;
 
 var camera_num = 0;
-
-function addTableLeg(obj, x, y, z) {
-    'use strict';
-
-    geometry = new THREE.CylinderGeometry(6, 6, 100);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y - 3, z);
-    obj.add(mesh);
-}
-
-function addTableTop(obj, x, y, z) {
-    'use strict';
-    geometry = new THREE.CubeGeometry(360, 12, 120);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
-
-
-function createTable(x, y, z) {
-    'use strict';
-    
-    var table = new THREE.Object3D();
-    
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-   
-    addTableTop(table, 0, 0, 0);
-    addTableLeg(table, -150, -50, -48);
-    addTableLeg(table, -150, -50, 48);
-    addTableLeg(table, 150, -50, 48);
-    addTableLeg(table, 150, -50, -48);
-    
-    scene.add(table);
-    
-    table.position.x = x;
-    table.position.y = y;
-    table.position.z = z;
-}
 
 function createScene() {
     'use strict';
     
     scene = new THREE.Scene();
     
-
-    scene.add(new THREE.AxisHelper(10));
+    scene.add(new THREE.AxisHelper(40));
     
+    createLamp(0, 0, 0);
     createTable(0, 8, 0);
 }
 
@@ -108,12 +68,14 @@ function onResize() {
 
 function onKeyDown(e) {
     'use strict';
+    
     switch (e.keyCode) {
     case 65: //A
     case 97: //a
+        wireframe = !wireframe;
         scene.traverse(function (node) {
             if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
+                node.material.wireframe = wireframe; //!node.material.
             }
         });
         break;
@@ -126,14 +88,13 @@ function onKeyDown(e) {
         });
         break;
     case 49: //1
-           camera_num =0;
-            
+            camera_num = 0;
             break;
         case 50:
-            camera_num =1;
+            camera_num = 1;
             break;
         case 51:
-            camera_num=2;
+            camera_num = 2;
             break;
 
     }
@@ -142,12 +103,14 @@ function onKeyDown(e) {
 
 function render() {
     'use strict';
-        renderer.render(scene, cameraList[camera_num]);
+    
+    renderer.render(scene, cameraList[camera_num]);
 
 }
 
 function init() {
     'use strict';
+    
     renderer = new THREE.WebGLRenderer({
         antialias: true
     });
@@ -170,4 +133,3 @@ function animate() {
     
     requestAnimationFrame(animate);
 }
-
