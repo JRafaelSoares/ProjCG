@@ -34,13 +34,27 @@ function addChairWheelAxis(obj, x, y, z) {
     obj.add(mesh);
 }
 
-/*function addWheelTriangle(obj, x, y, z) {
+function addLegChair(obj, x, y, z) {
     'use strict';
     
-    var geometry = new THREE.CylinderGeometry( 15, 5, 1, 3, 1);
+    geometry = new THREE.CylinderGeometry( 10, 10, 100, 13, 1, false, 0, 3.15);
+    mesh = new THREE.Mesh(geometry,material);
+    mesh.rotation.z = ( Math.PI * 7) / 12;
+    
+    mesh.position.set(x,y,z);
+    obj.add(mesh);
+}
+
+/*
+function addWheelTriangle(obj, x, y, z) {
+    'use strict';
+    
+    var geometry = new THREE.CylinderGeometry( 30, 5, 1, 3, 1);
     mesh = new THREE.Mesh(geometry, material);
+    
+    mesh.rotation.z = Math.PI/2;
     mesh.position.set(x, y, z);
-    obj.add(mesh); 
+    obj.add(mesh);
 }*/
 
 function createChair( x, y, z) {
@@ -50,12 +64,12 @@ function createChair( x, y, z) {
     
     material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wirefram: true });
     
-    
-    //addChairWheel(chair, 0, 0, 0);
+    addChairWheel(chair, 0, 0, 0);
     addChairSeat(chair, 0, 60, 0);
     addChairBack(chair, 0, 114, -34);
     //addChairWheelAxis(chair, 0, 60, 0);
-    
+    addLegChair(chair, 30, 15, 0);
+    //addWheelTriangle(chair, x, y, z);
     
     chair.position.x = x;
     chair.position.y = y;
