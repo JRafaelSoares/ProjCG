@@ -15,8 +15,9 @@ function createScene() {
     
     scene.add(new THREE.AxisHelper(40));
     
-    createLamp(0, 0, 0);
-    createTable(0, 8, 0);
+    //createLamp(0, 0, 0);
+    //createTable(0, 8, 0);
+    createChair(15, 15, 50);
 }
 
 function createCamera() {
