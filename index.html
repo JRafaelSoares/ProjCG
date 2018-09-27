@@ -2,23 +2,67 @@
 <html>
     <head>
         <meta charset=”utf-8”>
-        <title>1&ordf; aula - CG@IST/UL</title>
+        <title>Projecto 1 - CG</title>
         <style>
             body {
                 margin: 0px;
                 background-color: #fff;
                 overflow: hidden;
+            }
         </style>
+        
+        
         <script src="js/three.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/mesa.js"></script>
-        <script src="js/lamp.js"></script>
-        <script src="js/chair.js"></script>
+        
+        <script src="js/setup.js"></script>
+        
+        
+        <!--  app  -->
+        <script src="js/app/GraphicalEntity.js"></script>
+        <script src="js/app/Main.js"></script>
+        
+        
+        <!--  Table  -->
+        <script src="js/app/Table/Table.js"></script>
+        <script src="js/app/Table/TableTop.js"></script>
+        <script src="js/app/Table/TableLeg.js"></script>
+        
+        
+        <!--  Lamp  -->
+        <script src="js/app/Lamp/Lamp.js"></script>
+        <script src="js/app/Lamp/Base.js"></script>
+        <script src="js/app/Lamp/Foot.js"></script>
+        
+        <!--  Lamp/LampTop  -->
+        <script src="js/app/Lamp/LampTop/LampTop.js"></script>
+        <script src="js/app/Lamp/LampTop/Shade.js"></script>
+        <script src="js/app/Lamp/LampTop/Bulb.js"></script>
+        
+        
+        <!--  Chair  -->
+        <script src="js/app/Chair/Chair.js"></script>
+        
+        <!--  Chair/ChairTop  -->
+        <script src="js/app/Chair/ChairTop/Back.js"></script>
+        <script src="js/app/Chair/ChairTop/ChairTop.js"></script>
+        <script src="js/app/Chair/ChairTop/Seat.js"></script>
+        
+        <!--  Chair/ChairBottom  -->
+        <script src="js/app/Chair/ChairBottom/ChairBottom.js"></script>
+        <script src="js/app/Chair/ChairBottom/Axis.js"></script>
+        
+        <!--  Chair/ChairBottom/ChairLeg  -->
+        <script src="js/app/Chair/ChairBottom/ChairLeg/ChairLeg.js"></script>
+        
+        <!--  Chair/ChairBottom/ChairLeg/WheelStructure  -->
+        <script src="js/app/Chair/ChairBottom/ChairLeg/WheelStructure/Wheel.js"></script>
+        <script src="js/app/Chair/ChairBottom/ChairLeg/WheelStructure/WheelConnection.js"></script>
+        <script src="js/app/Chair/ChairBottom/ChairLeg/WheelStructure/WheelStructure.js"></script>
+        
     </head>
     <body>      
         <script>
             init();
-            animate();
         </script>
     </body>
 </html>

@@ -1,8 +1,14 @@
-/*global THREE, requestAnimationFrame, console*/
+class Main {
+    var cameraList = new Array(3);
+    var scene, renderer;
 
-var camera1, camera2, camera3, scene, renderer;
+    
+}
 
-var cameraList;
+
+
+
+
 
 var geometry, material, lampMaterial, mesh, wireframe = true;
 
@@ -17,7 +23,7 @@ function createScene() {
     
     //createLamp(0, 0, 0);
     //createTable(0, 8, 0);
-    createChair(15, 15, 50);
+    createChair(0, 0, 0);
 }
 
 function createCamera() {
@@ -43,7 +49,7 @@ function createCamera() {
     camera3.position.y = 0;
     camera3.position.z = 200;
     camera3.lookAt(scene.position);
-    cameraList= [camera1, camera2, camera3];
+    cameraList = [camera1, camera2, camera3];
 }
 
 function onResize() {
@@ -89,14 +95,14 @@ function onKeyDown(e) {
         });
         break;
     case 49: //1
-            camera_num = 0;
-            break;
-        case 50:
-            camera_num = 1;
-            break;
-        case 51:
-            camera_num = 2;
-            break;
+        camera_num = 0;
+        break;
+    case 50:
+        camera_num = 1;
+        break;
+    case 51:
+        camera_num = 2;
+        break;
 
     }
     
