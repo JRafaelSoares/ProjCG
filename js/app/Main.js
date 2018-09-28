@@ -1,142 +1,119 @@
 class Main {
-    var cameraList = new Array(3);
-    var scene, renderer;
 
-    
-}
+    constructor(){
+        'use strict';
+        
+        this.renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
 
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
 
+        document.body.appendChild(this.renderer.domElement);
+       
+        this.createScene();
+        this.createCamera();
+        
+        this.animate();
+    }
 
+    createScene() {
+        'use strict';
+        
+        this.scene = new THREE.Scene();
+        
+        this.axisHelper = new THREE.AxesHelper(40);
 
+        this.axisHelper.visible = true;
 
+        this.scene.add(this.axisHelper);
+        
+        //createLamp(0, 0, 0);
+        //createTable(0, 8, 0);
+        //createChair(0, 0, 0);
+    }
 
-var geometry, material, lampMaterial, mesh, wireframe = true;
+    createCamera() {
+        'use strict';
 
-var camera_num = 0;
+        this.cameraList = new Array(3);
+        this.cameraNum = 0;
 
-function createScene() {
-    'use strict';
-    
-    scene = new THREE.Scene();
-    
-    scene.add(new THREE.AxisHelper(40));
-    
-    //createLamp(0, 0, 0);
-    //createTable(0, 8, 0);
-    createChair(0, 0, 0);
-}
+        for(var i = 0; i < 3; i++){
 
-function createCamera() {
-    'use strict';
-    
-    camera1 = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
-    
-    camera1.position.x = 0;
-    camera1.position.y = 200;
-    camera1.position.z = 0;
-    camera1.lookAt(scene.position);
-    
-    camera2 = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
-    
-    camera2.position.x = 200;
-    camera2.position.y = 0;
-    camera2.position.z = 0;
-    camera2.lookAt(scene.position);
-    
-    camera3 = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
-    
-    camera3.position.x = 0;
-    camera3.position.y = 0;
-    camera3.position.z = 200;
-    camera3.lookAt(scene.position);
-    cameraList = [camera1, camera2, camera3];
-}
+            this.cameraList[i] = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
+        
+            this.cameraList[i].position.x = 200 * (i == 2 ? 1 : 0);
+            this.cameraList[i].position.y = 200 * (i == 1 ? 1 : 0);
+            this.cameraList[i].position.z = 200 * (i == 3 ? 1 : 0);
 
-function onResize() {
-    'use strict';
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    
-    if (window.innerHeight > 0 && window.innerWidth > 0) {
-        for (var i = 0; i<cameraList.length; i++){
-            
-            cameraList[i].left = window.innerWidth / -2;
-            cameraList[i].right = window.innerWidth / 2;
-
-            cameraList[i].top = window.innerHeight / 2;
-            cameraList[i].bottom = window.innerHeight / -2;
-
-            cameraList[i].updateProjectionMatrix();
-
+            this.cameraList[i].lookAt(this.scene.position);
         }
     }
 
-}
+    render() {
+        'use strict';
+        
+        this.renderer.render(this.scene, this.cameraList[this.cameraNum]);
+    }
 
-function onKeyDown(e) {
-    'use strict';
-    
-    switch (e.keyCode) {
-    case 65: //A
-    case 97: //a
-        wireframe = !wireframe;
-        scene.traverse(function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = wireframe; //!node.material.
+
+    animate() {
+        'use strict';
+        
+        this.render();
+        
+        requestAnimationFrame(() => this.animate());
+    }
+
+
+    resizeEvent() {
+        'use strict';
+
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        if (window.innerHeight > 0 && window.innerWidth > 0) {
+            for (var i = 0; i < this.cameraList.length; i++){
+                
+                this.cameraList[i].left = window.innerWidth / -2;
+                this.cameraList[i].right = window.innerWidth / 2;
+
+                this.cameraList[i].top = window.innerHeight / 2;
+                this.cameraList[i].bottom = window.innerHeight / -2;
+
+                this.cameraList[i].updateProjectionMatrix();
+
             }
-        });
-        break;
-    case 69:  //E
-    case 101: //e
-        scene.traverse(function (node) {
-            if (node instanceof THREE.AxisHelper) {
-                node.visible = !node.visible;
-            }
-        });
-        break;
-    case 49: //1
-        camera_num = 0;
-        break;
-    case 50:
-        camera_num = 1;
-        break;
-    case 51:
-        camera_num = 2;
-        break;
+        }
 
     }
-    
+
+    keyboardEvent(k) {
+        'use strict';
+
+        switch(k) {
+            case 65: //A
+            case 97: //a
+                /*wireframe = !wireframe;
+                scene.traverse(function (node) {
+                    if (node instanceof THREE.Mesh) {
+                        node.material.wireframe = wireframe; //!node.material.
+                    }
+                });*/
+                console.log("Wireframe");
+                break;
+            case 49: //1
+                this.cameraNum = 0;
+                break;
+            case 50:
+                this.cameraNum = 1;
+                break;
+            case 51:
+                this.cameraNum = 2;
+                break;
+
+        }
+        
+    }
 }
 
-function render() {
-    'use strict';
-    
-    renderer.render(scene, cameraList[camera_num]);
-
-}
-
-function init() {
-    'use strict';
-    
-    renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-   
-    createScene();
-    createCamera();
-    
-    render();
-    
-    window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("resize", onResize);
-}
-
-function animate() {
-    'use strict';
-    
-    render();
-    
-    requestAnimationFrame(animate);
-}
