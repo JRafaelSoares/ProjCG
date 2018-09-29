@@ -107,7 +107,7 @@ function addChairWheelAxis(obj, x, y, z) {
     obj.add(mesh);
 }
 
-function createChair( x, y, z) {
+function createChair(x, y, z) {
     'use strict';
     
     var chair = new THREE.Object3D();
