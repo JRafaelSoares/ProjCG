@@ -27,10 +27,14 @@ class Main {
         this.axisHelper.visible = true;
 
         this.scene.add(this.axisHelper);
-        
-        //createLamp(0, 0, 0);
-        //createTable(0, 8, 0);
-        //createChair(0, 0, 0);
+
+        //this.chair = new Chair();
+        //this.lamp = new Lamp();
+        //this.table = new Table();
+
+        //this.scene.add(this.chair);
+        //this.scene.add(this.lamp);
+        //this.scene.add(this.table);
     }
 
     createCamera() {
