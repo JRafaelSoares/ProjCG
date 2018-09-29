@@ -13,4 +13,8 @@ class Foot extends GraphicalEntity{
         this.position.set(x, y, z);
     }
 
+    get height(){
+        return this.geometry.parameters.height;
+    }
+
 }
