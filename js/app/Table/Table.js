@@ -1,37 +1,26 @@
-function addTableLeg(obj, x, y, z) {
-    'use strict';
-
-    geometry = new THREE.CylinderGeometry(6, 6, 100);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y - 3, z);
-    obj.add(mesh);
-}
-
-function addTableTop(obj, x, y, z) {
-    'use strict';
-    geometry = new THREE.CubeGeometry(360, 12, 120);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
-
-
-function createTable(x, y, z) {
-    'use strict';
+class Table extends GraphicalEntity{
     
-    var table = new THREE.Object3D();
-    
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-   
-    addTableTop(table, 0, 0, 0);
-    addTableLeg(table, -150, -50, -48);
-    addTableLeg(table, -150, -50, 48);
-    addTableLeg(table, 150, -50, 48);
-    addTableLeg(table, 150, -50, -48);
-    
-    table.position.x = x;
-    table.position.y = y;
-    table.position.z = z;
-    
-    scene.add(table);
+    constructor(x, y, z){
+        super();
+        
+        this.tableTop = new TableTop(x, y, z);
+        
+        this.tableLegList = new Array(4);
+        
+        this.tableLegList[0] = new TableLeg(x-75, y-25, z-24);
+        this.tableLegList[1] = new TableLeg(x-75, y-25, z+24);
+        this.tableLegList[2] = new TableLeg(x+75, y-25, z+24);
+        this.tableLegList[3] = new TableLeg(x+75, y-25, z-24);
+        
+        this.add(this.tableTop);
+        
+        for(var i=0; i<4;i++){
+            this.add(this.tableLegList[i]);
+        }
+        
+        this.position.x = x;
+        this.position.y = y;
+        this.position.z = z;
+        
+    }
 }
