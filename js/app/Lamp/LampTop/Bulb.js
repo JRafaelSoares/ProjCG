@@ -1,21 +1,20 @@
-function addLampBase(obj, x, y, z) {
-    'use strict';
-    
-    geometry = new THREE.ConeGeometry(20, 10, 15);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
+class Bulb extends GraphicalEntity{
 
-function addLampBody(obj, x, y, z) {
-    'use strict';
-    
-    var lampHeight = 60;
-    
-    geometry = new THREE.CylinderGeometry(4, 4, lampHeight);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y + lampHeight / 2, z);
-    obj.add(mesh);
+    constructor(x, y, z){
+        super();
+
+        this.material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+
+        this.geometry = new THREE.SphereGeometry(8, 4, 4);
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.mesh.position.set(0, 8, 0);
+        this.mesh.scale.set(1,2,1);
+
+        this.add(this.mesh);
+        console.log(y);
+        this.position.set(x, y, z);
+    }
+
 }
 
 function addLightBulb(obj, x, y, z) {
