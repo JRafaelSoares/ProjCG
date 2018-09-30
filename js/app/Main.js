@@ -45,12 +45,12 @@ class Main {
 
         for(var i = 0; i < 3; i++){
 
-            this.cameraList[i] = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
+            this.cameraList[i] = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 100);
         
             this.cameraList[i].position.x = 200 * (i == 1 ? 1 : 0);
             this.cameraList[i].position.y = 200 * (i == 0 ? 1 : 0);
             this.cameraList[i].position.z = 200 * (i == 2 ? 1 : 0);
-
+            
             this.cameraList[i].lookAt(this.scene.position);
         }
     }

@@ -14,38 +14,6 @@ class Chair extends GraphicalEntity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
 var wheels;
 
 function addChairWheel(obj, x, y, z) {
@@ -127,4 +95,3 @@ function createChair(x, y, z) {
     
     scene.add(chair);
 }
-*/
