@@ -1,16 +1,17 @@
-class Chair extends GraphicalEntity {
-    var chairTop;
-    var chairBottom;
+class WheelStructure extends GraphicalEntity {
     
-    constructor Chair() {
-        chairTop = new ChairTop();
-        chairBottom = new ChairBottom();
+    constructor(x, y, z) {
+        super();
+
+        this.wheel = new Wheel(-12, 0, 0);
+        this.wheelConnection = new WheelConnection(-6, 6, 0);
         
-        this.add(chairTop);
-        this.add(chairBottom);
+        this.add(this.wheel);
+        this.add(this.wheelConnection);
+
+        this.position.set(x, y, z);
     }
 }
-
 
 
 
