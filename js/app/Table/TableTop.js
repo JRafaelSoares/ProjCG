@@ -7,9 +7,13 @@ class TableTop extends GraphicalEntity {
         
         this.geometry = new THREE.CubeGeometry(360, 12, 120);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.mesh.position.set(x, y, z);
+        this.mesh.position.set(0, 6, 0);
         
         this.add(this.mesh);
         this.position.set(x, y, z);
+    }
+
+    get length(){
+        return this.geometry.parameters.length;
     }
 }

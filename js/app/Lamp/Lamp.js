@@ -14,10 +14,9 @@ class Lamp extends GraphicalEntity{
         this.position.x = x;
         this.position.y = y;
         this.position.z = z;
+    }
 
-        /*this.addLampBase(0, 0, 0);
-        this.addLampBody(lamp, 0, 0, 0);
-        this.addLightBulb(lamp, 0, 64, 0);
-        this.addLampShade(lamp, 0, 70, 0);*/
+    update(){
+        
     }
 }

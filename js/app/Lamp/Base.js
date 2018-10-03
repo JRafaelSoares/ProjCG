@@ -5,7 +5,7 @@ class Base extends GraphicalEntity{
 
         this.material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
 
-        this.geometry = new THREE.ConeGeometry(30, 20, 15);
+        this.geometry = new THREE.ConeGeometry(40, 20, 15);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.set(0, 10, 0);
 

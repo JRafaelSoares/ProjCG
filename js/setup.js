@@ -6,7 +6,7 @@ function setup(){
 	window.addEventListener("keydown", 
 
 			function (e){
-				main.keyboardEvent(e.keyCode);
+				main.keyboardDownEvent(e.keyCode);
 			}
 
 	);

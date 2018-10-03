@@ -18,4 +18,17 @@ class ChairBottom extends GraphicalEntity {
 
         this.position.set(x, y, z);
     }
+
+    set rotationSpeed(v) {
+        for(var i = 0; i < 5; i++){
+            this.chairLegs[i].rotSpeed = v;
+        }
+    }
+
+    update(t) {
+
+        for(var i = 0; i < 5; i++){
+            this.chairLegs[i].update(t);
+        }
+    }
 }

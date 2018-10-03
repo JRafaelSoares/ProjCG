@@ -5,7 +5,7 @@ class Shade extends GraphicalEntity{
 
         this.material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
 
-        this.geometry = new THREE.CylinderGeometry(8, 30, 50);
+        this.geometry = new THREE.CylinderGeometry(12, 50, 80);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.set(0, 15, 0);
 

@@ -9,9 +9,23 @@ class Chair extends GraphicalEntity {
         this.add(this.chairTop);
         this.add(this.chairBottom);
 
+        this.rotSpeed = 0;
+
         this.position.x = x;
         this.position.y = y;
         this.position.z = z;
+    }
+
+    set rotationSpeed(v) {
+        this.rotSpeed = v;
+
+        this.chairBottom.rotationSpeed = v;
+    }
+
+    update(t) {
+        this.chairTop.rotation.y += this.rotSpeed * t;
+
+        this.chairBottom.update(t);
     }
     
 }

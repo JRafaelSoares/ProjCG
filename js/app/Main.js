@@ -13,6 +13,8 @@ class Main {
        
         this.createScene();
         this.createCamera();
+
+        this.clock = new THREE.Clock();
         
         this.animate();
     }
@@ -28,13 +30,13 @@ class Main {
 
         this.scene.add(this.axisHelper);
 
-        this.chair = new Chair(0, 0, 0);
-        //this.lamp = new Lamp(0, 0, 0);
-        //this.table = new Table();
+        this.chair = new Chair(0, 0, -30);
+        this.lamp = new Lamp(-80, 0, -80);
+        this.table = new Table(0, 0, 0);
 
         this.scene.add(this.chair);
-        //this.scene.add(this.lamp);
-        //this.scene.add(this.table);
+        this.scene.add(this.lamp);
+        this.scene.add(this.table);
     }
 
     createCamera() {
@@ -64,6 +66,8 @@ class Main {
 
     animate() {
         'use strict';
+
+        this.update();
         
         this.render();
         
@@ -92,7 +96,7 @@ class Main {
 
     }
 
-    keyboardEvent(k) {
+    keyboardDownEvent(k) {
         'use strict';
 
         switch(k) {
@@ -109,15 +113,44 @@ class Main {
             case 49: //1
                 this.cameraNum = 0;
                 break;
-            case 50:
+            case 50: //2
                 this.cameraNum = 1;
                 break;
-            case 51:
+            case 51: //3
+                this.cameraNum = 2;
+                break;
+
+            case 39: //Right
+                this.chair.rotationSpeed = 0.5;
+                break;
+            case 37: //Left
+                this.chair.rotationSpeed = -0.5;
+                break;
+            case 38: //Up
+                this.cameraNum = 2;
+                break;
+            case 40: //Down
                 this.cameraNum = 2;
                 break;
 
         }
         
+    }
+
+    toggleWireframe() {
+        this.chair.toggleWireframe();
+        this.table.toggleWireframe();
+        this.lamp.toggleWireframe();
+    }
+
+    update() {
+
+        var t = this.clock.getDelta();
+
+        this.chair.update(t);
+        this.table.update(t);
+        this.lamp.update(t);
+
     }
 }
 
