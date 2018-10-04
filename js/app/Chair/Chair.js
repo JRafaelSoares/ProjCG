@@ -43,7 +43,7 @@ class Chair extends GraphicalEntity {
         if(this.linVelocity > 199.99){
             this.linVelocity = 200;
         }
-        else if(this.linVelocity < 0.01){
+        else if(this.linVelocity < 0.01 && this.linVelocity > -0.01){
             this.linVelocity = 0;
         }
 
