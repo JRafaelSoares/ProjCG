@@ -13,4 +13,8 @@ class WheelConnection extends GraphicalEntity {
 
         this.position.set(x, y, z);
     }
+
+    toggleWireframe() {
+        this.material.wireframe = !this.material.wireframe;
+    }
 }

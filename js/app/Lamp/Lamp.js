@@ -19,4 +19,10 @@ class Lamp extends GraphicalEntity{
     update(){
         
     }
+
+    toggleWireframe() {
+        this.base.toggleWireframe();
+        this.foot.toggleWireframe();
+        this.lampTop.toggleWireframe();
+    }
 }

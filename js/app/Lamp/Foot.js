@@ -17,4 +17,8 @@ class Foot extends GraphicalEntity{
         return this.geometry.parameters.height;
     }
 
+    toggleWireframe() {
+        this.material.wireframe = !this.material.wireframe;
+    }
+
 }

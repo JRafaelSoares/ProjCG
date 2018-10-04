@@ -11,4 +11,9 @@ class ChairTop extends GraphicalEntity {
 
         this.position.set(x, y, z);
     }
+
+    toggleWireframe() {
+        this.seat.toggleWireframe();
+        this.back.toggleWireframe();
+    }
 }

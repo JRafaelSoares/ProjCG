@@ -2,6 +2,8 @@ class Main {
 
     constructor(){
         'use strict';
+
+        this.keysPressed = [0, 0, 0, 0]; /* Left Right Down Up */
         
         this.renderer = new THREE.WebGLRenderer({
             antialias: true
@@ -49,9 +51,9 @@ class Main {
 
             this.cameraList[i] = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
         
-            this.cameraList[i].position.x = 200 * (i == 1 ? 1 : 0);
-            this.cameraList[i].position.y = 200 * (i == 0 ? 1 : 0);
-            this.cameraList[i].position.z = 200 * (i == 2 ? 1 : 0);
+            this.cameraList[i].position.x = 400 * (i == 1 ? 1 : 0);
+            this.cameraList[i].position.y = 400 * (i == 0 ? 1 : 0);
+            this.cameraList[i].position.z = 400 * (i == 2 ? 1 : 0);
 
             this.cameraList[i].lookAt(this.scene.position);
         }
@@ -102,13 +104,7 @@ class Main {
         switch(k) {
             case 65: //A
             case 97: //a
-                /*wireframe = !wireframe;
-                scene.traverse(function (node) {
-                    if (node instanceof THREE.Mesh) {
-                        node.material.wireframe = wireframe; //!node.material.
-                    }
-                });*/
-                console.log("Wireframe");
+                this.toggleWireframe();
                 break;
             case 49: //1
                 this.cameraNum = 0;
@@ -121,16 +117,45 @@ class Main {
                 break;
 
             case 39: //Right
-                this.chair.rotationSpeed = 0.5;
+                this.keysPressed[1] = 1;
+                this.chair.rotationSpeed = this.keysPressed[0] - this.keysPressed[1];
                 break;
             case 37: //Left
-                this.chair.rotationSpeed = -0.5;
+                this.keysPressed[0] = 1;
+                this.chair.rotationSpeed = this.keysPressed[0] - this.keysPressed[1];
                 break;
             case 38: //Up
-                this.cameraNum = 2;
+                this.keysPressed[2] = 100;
+                this.chair.linearAcceleration = this.keysPressed[2] - this.keysPressed[3];
                 break;
             case 40: //Down
-                this.cameraNum = 2;
+                this.keysPressed[3] = 100;
+                this.chair.linearAcceleration = this.keysPressed[2] - this.keysPressed[3];
+                break;
+
+        }
+        
+    }
+
+    keyboardUpEvent(k) {
+        'use strict';
+
+        switch(k) {
+            case 39: //Right
+                this.keysPressed[1] = 0;
+                this.chair.rotationSpeed = this.keysPressed[0] - this.keysPressed[1];
+                break;
+            case 37: //Left
+                this.keysPressed[0] = 0;
+                this.chair.rotationSpeed = this.keysPressed[0] - this.keysPressed[1];
+                break;
+            case 38: //Up
+                this.keysPressed[2] = 0;
+                this.chair.linearAcceleration = this.keysPressed[2] - this.keysPressed[3];
+                break;
+            case 40: //Down
+                this.keysPressed[3] = 0;
+                this.chair.linearAcceleration = this.keysPressed[2] - this.keysPressed[3];
                 break;
 
         }

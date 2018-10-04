@@ -11,4 +11,9 @@ class WheelStructure extends GraphicalEntity {
 
         this.position.set(x, y, z);
     }
+
+    toggleWireframe() {
+        this.wheel.toggleWireframe();
+        this.wheelConnection.toggleWireframe();
+    }
 }

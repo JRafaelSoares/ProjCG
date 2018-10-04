@@ -14,7 +14,7 @@ class Table extends GraphicalEntity{
         
         this.add(this.tableTop);
         
-        for(var i=0; i<4;i++){
+        for(var i = 0; i < 4; i++){
             this.add(this.tableLegList[i]);
         }
         
@@ -27,4 +27,13 @@ class Table extends GraphicalEntity{
     update(){
         
     }
+
+    toggleWireframe() {
+        this.tableTop.toggleWireframe();
+
+        for(var i = 0; i < 4; i++){
+            this.tableLegList[i].toggleWireframe();
+        }
+    }
+
 }

@@ -3,7 +3,7 @@ class Bulb extends GraphicalEntity{
     constructor(x, y, z){
         super();
 
-        this.material = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+        this.material = new THREE.MeshBasicMaterial({ color: 0xffff1a, wireframe: true });
 
         this.geometry = new THREE.SphereGeometry(8, 4, 4);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -12,6 +12,10 @@ class Bulb extends GraphicalEntity{
 
         this.add(this.mesh);
         this.position.set(x, y, z);
+    }
+
+    toggleWireframe() {
+        this.material.wireframe = !this.material.wireframe;
     }
 
 }

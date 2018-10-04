@@ -11,6 +11,14 @@ function setup(){
 
 	);
 
+	window.addEventListener("keyup", 
+
+			function (e){
+				main.keyboardUpEvent(e.keyCode);
+			}
+
+	);
+
     window.addEventListener("resize", 
 
 			function (){

@@ -16,4 +16,8 @@ class TableTop extends GraphicalEntity {
     get length(){
         return this.geometry.parameters.length;
     }
+
+    toggleWireframe() {
+        this.material.wireframe = !this.material.wireframe;
+    }
 }

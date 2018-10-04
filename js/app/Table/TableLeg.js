@@ -16,4 +16,8 @@ class TableLeg extends GraphicalEntity {
     get height(){
         return this.geometry.parameters.height;
     }
+
+    toggleWireframe() {
+        this.material.wireframe = !this.material.wireframe;
+    }
 }

@@ -31,4 +31,12 @@ class ChairBottom extends GraphicalEntity {
             this.chairLegs[i].update(t);
         }
     }
+
+    toggleWireframe() {
+        this.axes.toggleWireframe();
+
+        for(var i = 0; i < 5; i++){
+            this.chairLegs[i].toggleWireframe();
+        }
+    }
 }

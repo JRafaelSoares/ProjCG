@@ -14,5 +14,7 @@ class Seat extends GraphicalEntity {
         this.add(this.mesh);
     }
 
-    
+    toggleWireframe() {
+        this.material.wireframe = !this.material.wireframe;
+    }
 }

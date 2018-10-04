@@ -14,4 +14,8 @@ class LampTop extends GraphicalEntity{
         this.position.z = z;
     }
 
+    toggleWireframe() {
+        this.bulb.toggleWireframe();
+        this.shade.toggleWireframe();
+    }
 }
