@@ -19,6 +19,8 @@ class Chair extends GraphicalEntity {
         this.position.x = x;
         this.position.y = y;
         this.position.z = z;
+
+        this.chairRotationSinceLastMove = 0;
     }
 
     set rotationSpeed(v) {
@@ -35,15 +37,16 @@ class Chair extends GraphicalEntity {
         var actualAcceleration = this.linAcceleration - this.attrition * this.linVelocity;
 
         this.chairTop.rotation.y += this.rotSpeed * t;
+        this.chairRotationSinceLastMove += this.rotSpeed * t;
 
         this.linVelocity += actualAcceleration * t;
 
         /* this.linVelocity max 200 */
 
-        if(this.linVelocity > 199.99){
+        if(this.linVelocity > 195){
             this.linVelocity = 200;
         }
-        else if(this.linVelocity < 0.01){
+        else if(this.linVelocity < 5 && this.linVelocity > -5){
             this.linVelocity = 0;
         }
 
@@ -51,6 +54,13 @@ class Chair extends GraphicalEntity {
 
         this.position.x += linearMove * Math.sin(this.chairTop.rotation.y);
         this.position.z += linearMove * Math.cos(this.chairTop.rotation.y);
+
+        this.chairBottom.adjustWheelsToSpeed(this.linVelocity);
+
+        if(this.linVelocity > 0){
+            this.chairBottom.rotateWheels(this.chairRotationSinceLastMove);
+            this.chairRotationSinceLastMove = 0;
+        }
 
         this.chairBottom.update(t);
     }

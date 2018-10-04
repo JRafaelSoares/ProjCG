@@ -10,22 +10,24 @@ class ChairLeg extends GraphicalEntity {
         this.add(this.wheelStructure);
 
         this.position.set(x, y, z);
-
-        this.rotSpeed = 0;
-    }
-
-    set rotationSpeed(v) {
-    	this.rotSpeed = v;
     }
 
     update(t) {
 
-    	this.wheelStructure.rotation.y += this.rotSpeed * t;
+    	this.wheelStructure.update(t);
 
     }
 
     toggleWireframe() {
         this.leg.toggleWireframe();
         this.wheelStructure.toggleWireframe();
+    }
+
+    rotateWheel(w) {
+        this.wheelStructure.rotation.y += w;
+    }
+
+    adjustWheelToSpeed(v){
+        this.wheelStructure.adjustWheelToSpeed(v);
     }
 }

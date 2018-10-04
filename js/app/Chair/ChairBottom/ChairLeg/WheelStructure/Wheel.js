@@ -5,9 +5,9 @@ class Wheel extends GraphicalEntity {
 
         this.material = new THREE.MeshBasicMaterial({ color: 0x8080ff, wireframe: true });
 
-        this.geometry = new THREE.TorusGeometry(3, 3, 16, 25);
+        this.geometry = new THREE.TorusGeometry(24, 24, 4, 4);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.mesh.position.set(6, 6, 0);
+        this.mesh.position.set(0, 0, 0);
         
         this.add(this.mesh);
 
