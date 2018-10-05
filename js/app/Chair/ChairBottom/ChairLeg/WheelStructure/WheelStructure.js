@@ -26,6 +26,6 @@ class WheelStructure extends GraphicalEntity {
     }
 
     adjustWheelToSpeed(v){
-        this.rotSpeed = -v / 48;
+        this.rotSpeed = -v / 6;
     }
 }
