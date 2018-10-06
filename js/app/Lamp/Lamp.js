@@ -55,7 +55,7 @@ class Lamp extends GraphicalEntity{
 
         this.bulbMaterial = new THREE.MeshBasicMaterial({ color: 0xffff1a, wireframe: true });
 
-        var geometry = new THREE.SphereGeometry(8, 4, 4);
+        var geometry = new THREE.SphereGeometry(8, 20, 4);
         var mesh = new THREE.Mesh(geometry, this.bulbMaterial);
         mesh.position.set(x, y, z);
         mesh.scale.set(1,1.5,1);
