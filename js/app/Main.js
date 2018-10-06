@@ -33,11 +33,11 @@ class Main {
         this.scene.add(this.axisHelper);
 
         this.chair = new Chair(0, 0, -30);
-        this.lamp = new Lamp(-80, 0, -80);
+        //this.lamp = new Lamp(-80, 0, -80);
         this.table = new Table(0, 0, 0);
 
         this.scene.add(this.chair);
-        this.scene.add(this.lamp);
+        //this.scene.add(this.lamp);
         this.scene.add(this.table);
     }
 
@@ -174,7 +174,7 @@ class Main {
 
         this.chair.update(t);
         this.table.update(t);
-        this.lamp.update(t);
+        //this.lamp.update(t);
 
     }
 }

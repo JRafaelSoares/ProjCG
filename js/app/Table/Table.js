@@ -29,7 +29,6 @@ class Table extends GraphicalEntity{
         this.add(this.tableMesh);
         this.tableMesh.position.set(0, 126, 0);
         
-        console.log(this.tableMesh.position.y);
         this.position.x = x;
         this.position.y = y;
         this.position.z = z;
