@@ -87,15 +87,9 @@ class Main {
 
         if(window.innerWidth < window.innerHeight){
             this.scene.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);
-            /*this.chair.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);
-            this.lamp.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);
-            this.table.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);*/
         }
         else {
             this.scene.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);
-            /*this.chair.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);
-            this.lamp.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);
-            this.table.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);*/
         }
         
         if (window.innerHeight > 0 && window.innerWidth > 0) {
