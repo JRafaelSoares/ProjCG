@@ -11,6 +11,9 @@ class Main {
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
+        this.defaultWidth = window.innerWidth;
+        this.defaultHeight = window.innerHeight;
+
         document.body.appendChild(this.renderer.domElement);
        
         this.createScene();
@@ -51,9 +54,9 @@ class Main {
 
             this.cameraList[i] = new THREE.OrthographicCamera(window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 1, 1000);
         
-            this.cameraList[i].position.x = 400 * (i == 1 ? 1 : 0);
-            this.cameraList[i].position.y = 400 * (i == 0 ? 1 : 0);
-            this.cameraList[i].position.z = 400 * (i == 2 ? 1 : 0);
+            this.cameraList[i].position.x = 600 * (i == 1 ? 1 : 0);
+            this.cameraList[i].position.y = 600 * (i == 0 ? 1 : 0);
+            this.cameraList[i].position.z = 600 * (i == 2 ? 1 : 0);
 
             this.cameraList[i].lookAt(this.scene.position);
         }
@@ -81,6 +84,19 @@ class Main {
         'use strict';
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+        if(window.innerWidth < window.innerHeight){
+            this.scene.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);
+            /*this.chair.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);
+            this.lamp.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);
+            this.table.scale.set(window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth, window.innerWidth / this.defaultWidth);*/
+        }
+        else {
+            this.scene.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);
+            /*this.chair.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);
+            this.lamp.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);
+            this.table.scale.set(window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight, window.innerHeight / this.defaultHeight);*/
+        }
         
         if (window.innerHeight > 0 && window.innerWidth > 0) {
             for (var i = 0; i < this.cameraList.length; i++){
