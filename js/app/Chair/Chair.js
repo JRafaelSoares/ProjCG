@@ -3,6 +3,8 @@ class Chair extends GraphicalEntity {
     constructor(x, y, z) {
         super();
 
+        this.chairWheels = Array(5);
+
         this.createChairTop(0, 80, 0);
         this.createChairBottom(0, 0, 0);
         
@@ -72,7 +74,7 @@ class Chair extends GraphicalEntity {
             chairLeg.add(mesh);
 
             /*  Create WheelStructure  */
-            this.chairWheelStructures[i] = this.createWheelStructure(52.5, 0, 0);
+            this.chairWheelStructures[i] = this.createWheelStructure(52.5, 0, 0, i);
             chairLeg.add(this.chairWheelStructures[i]);
 
 
@@ -85,17 +87,21 @@ class Chair extends GraphicalEntity {
         this.chairBottom.position.set(x, y, z);
     }
 
-    createWheelStructure(x, y, z) {
+    createWheelStructure(x, y, z, i) {
         var wheelStructure = new THREE.Object3D();
 
         /*  Create Wheel  */
         this.wheelStructureMaterial = new THREE.MeshBasicMaterial({ color: 0x8080ff, wireframe: true });
 
-        var geometry = new THREE.TorusGeometry(3, 3, 12, 12);
+        this.wheelRadius = 24;
+
+        var geometry = new THREE.TorusGeometry(this.wheelRadius / 2, this.wheelRadius / 2, 6, 6);
         var mesh = new THREE.Mesh(geometry, this.wheelStructureMaterial);
         mesh.position.set(-4.5, 6, 0);
         
         wheelStructure.add(mesh);
+
+        this.chairWheels[i] = mesh;
 
         /*  Create WheelConnection  */
         geometry = new THREE.CylinderGeometry(3, 3, 12);
@@ -145,6 +151,11 @@ class Chair extends GraphicalEntity {
         else if(this.linVelocity < 0){
             this.rotateWheels(this.chairTop.rotation.y + Math.PI);
         }
+
+        for(var i = 0; i < 5; i++){
+            this.chairWheels[i].rotation.z += -(Math.abs(this.linVelocity) / this.wheelRadius) * t;
+        }
+
     }
 
     toggleWireframe() {

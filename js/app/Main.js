@@ -183,7 +183,7 @@ class Main {
         var t = this.clock.getDelta();
 
         this.chair.update(t);
-        this.table.update(t);
+        //this.table.update(t);
         //this.lamp.update(t);
 
     }
